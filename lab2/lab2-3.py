@@ -5,17 +5,12 @@ import matplotlib.pyplot as plt
 img = cv2.imread('lab2/Fig0310.tif')
 img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY);
 
-
-
 fig = plt.figure();
 x = np.arange(256)
 xp = [0, 64, 192, 255]
 fp = [0, 16, 240, 255]
 table = np.interp(x, xp, fp).astype('uint8')
 img1 = cv2.LUT(img, table)
-
-
-
 
 pic_subplot = plt.subplot(3,2,1)
 pic_subplot.imshow(img1)
