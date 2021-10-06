@@ -9,7 +9,6 @@ ogImage = cv2.resize(image, [300,300]);
 
 cv2.imshow("Original", ogImage);
 
-
 down = [
   [128,128],
   [64,64],
