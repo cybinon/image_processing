@@ -27,8 +27,8 @@ pic_subplot.imshow(img2)
 pic_subplot = plt.subplot(3,2,4)
 pic_subplot.plot(xp,fp)
 
-xp = [0, 115, 128, 100, 255]
-fp = [0,  0,  128, 255, 255]
+xp = [0, 110, 130, 255]
+fp = [0,  0, 255, 255]
 table = np.interp(x, xp, fp).astype('uint8')
 img3 = cv2.LUT(img, table)
 
