@@ -1,13 +1,8 @@
-<style>
-  .title{
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #000;
-  }
-</style>
 # Хэв танилтын үндэс лаб 2 | Тайлан
 
-<h2 class="title">Даалгавар 2</h2>
+<h2 style="margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;">Даалгавар 2</h2>
 
 Зургийн хэмжээ дэлгэцээс хэт том гарч ирж байсан болохоор хэмжээг 300,300-руу хэмжээрүү багасгаад эндээс өгөгдсөн хэмжээсүүд дээр ажиглалт хийсэн.
 
