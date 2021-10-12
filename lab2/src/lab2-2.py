@@ -1,8 +1,12 @@
 import cv2 #OpenCV 
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
-image = cv2.imread("./lab2/rose.tif");
+dir_path = os.path.dirname(os.path.realpath(__file__))
+file_path = "./lab2/rose.tif"
+
+image = cv2.imread(file_path);
 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY);
 
 ogImage = cv2.resize(image, [300,300]);
