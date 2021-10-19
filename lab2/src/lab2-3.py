@@ -2,40 +2,40 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('lab2/Fig0310.tif')
-img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY);
 
-fig = plt.figure();
-x = np.arange(256)
-xp = [0, 64, 192, 255]
-fp = [0, 16, 240, 255]
-table = np.interp(x, xp, fp).astype('uint8')
-img1 = cv2.LUT(img, table)
+def increase_brightness(img, value=30):
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    h, s, v = cv2.split(hsv)
 
-pic_subplot = plt.subplot(3,2,1)
-pic_subplot.imshow(img1)
-pic_subplot = plt.subplot(3,2,2)
-pic_subplot.plot(xp,fp)
+    lim = 255 - value
+    v[v > lim] = 255
+    v[v <= lim] += value
 
-xp = [0, 90, 192, 255]
-fp = [0, 32, 150, 255]
-table = np.interp(x, xp, fp).astype('uint8')
-img2 = cv2.LUT(img, table)
+    final_hsv = cv2.merge((h, s, v))
+    img = cv2.cvtColor(final_hsv, cv2.COLOR_HSV2BGR)
+    return img
 
-pic_subplot = plt.subplot(3,2,3)
-pic_subplot.imshow(img2)
-pic_subplot = plt.subplot(3,2,4)
-pic_subplot.plot(xp,fp)
+img = cv2.imread('./lab2/Fig0310.tif')
 
-xp = [0, 110, 130, 255]
-fp = [0,  0, 255, 255]
-table = np.interp(x, xp, fp).astype('uint8')
-img3 = cv2.LUT(img, table)
+plt.figure()
 
-pic_subplot = plt.subplot(3,2,5)
-pic_subplot.imshow(img3)
-pic_subplot = plt.subplot(3,2,6)
-pic_subplot.plot(xp,fp)
+plot = plt.subplot(2,2,1).imshow(img)
+
+img = increase_brightness(img)
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+plot = plt.subplot(2,2,2).imshow(img)
+
+output = img;
+output = output*0;
+
+for i in range(len(img)):
+  for j in range(len(img[0])):
+    if(img[i][j]>150):
+      output[i][j]=255
+    else:
+      output[i][j] = 0;
+      
+plot = plt.subplot(2,2,3).imshow(output)
 
 plt.show()
 
