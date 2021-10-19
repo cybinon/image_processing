@@ -11,7 +11,7 @@ row = len(img)
 col = len(img[0])
 
 plt.figure()
-plot = plt.subplot(1,3,1).imshow(img)
+plot = plt.subplot(1,3,1).imshow(img, cmap="gray")
 
 for i in range(row):
   for j in range(col):
@@ -19,7 +19,7 @@ for i in range(row):
       img1[i][j] = 255;
     else:
       img1[i][j] = 0;
-plot = plt.subplot(1,3,2).imshow(img1)
+plot = plt.subplot(1,3,2).imshow(img1, cmap="gray")
 
 for i in range(row):
   for j in range(col):
@@ -30,7 +30,7 @@ for i in range(row):
     else:
       img2[i][j] = 142
 
-plot = plt.subplot(1,3,3).imshow(img2)
+plot = plt.subplot(1,3,3).imshow(img2, cmap="gray")
 
 
 
