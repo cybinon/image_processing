@@ -1,5 +1,43 @@
 # Хэв танилтын үндэс лаб 2 | Тайлан
 
+<h1>Даалгавар 1</h1>
+
+
+```python
+
+bit7 = (img/2)*2
+plot = plt.subplot(2,4,1).imshow(bit7)
+
+bit6 = (img/4)*4
+plot = plt.subplot(2,4,2).imshow(bit6)
+
+bit5 = (img/8)*8
+plot = plt.subplot(2,4,3).imshow(bit5)
+
+bit4 = (img/16)*16
+plot = plt.subplot(2,4,4).imshow(bit4)
+
+bit3 = (img/32)*32
+plot = plt.subplot(2,4,5).imshow(bit3)
+
+bit2 = (img/64)*64
+plot = plt.subplot(2,4,6).imshow(bit2)
+
+```
+
+```python
+output = img;
+for i in range(len(img)):
+  for j in range(len(img[0])):
+    if img[i][j]>100:
+      output[i][j] = 255
+    else:
+      output[i][j] = 0
+
+plot = plt.subplot(2,4,8).imshow(output)
+```
+
+<!-- -------------------------------------------Даалгавар 2 -->
 <h1>Даалгавар 2</h1>
 
 Зургийн хэмжээ дэлгэцээс хэт том гарч ирж байсан болохоор хэмжээг 300,300-руу хэмжээрүү багасгаад эндээс өгөгдсөн хэмжээсүүд дээр ажиглалт хийсэн.
@@ -80,6 +118,28 @@ pic_plot.imshow(зураг)
 <img src="./bilinear.png">
 
 <h1>Даалгавар 3</h1>
+
+Бүх pixel үүдийн утгыг тодруулах функц байгаагүй учир доорх кодонд бичиж өгөв.
+
+```python
+
+def increase_brightness(img, value=30):
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) 
+    h, s, v = cv2.split(hsv) 
+    #Дээрх код нь Hue, Situation, Lightness задлаж хувиргаж авах үйлдэл
+
+    # Энд гол тодруулах үйлдлийг хийнэ. Орж ирсэн "value" -аас хамаарч хэр зэрэг тодруулах үйлдлийг хийнэ. Дундаж буюу стандарт 225 байдаг ба 255-30 утга оноогоогүй тохиолдолд автоматаар өгөгдөнө 
+    lim = 255 - value
+    v[v > lim] = 255
+    v[v <= lim] += value
+
+    final_hsv = cv2.merge((h, s, v))
+    img = cv2.cvtColor(final_hsv, cv2.COLOR_HSV2BGR)
+    return img
+
+```
+
+<h1>Нэмэлт Ажил</h1>
 
 > Ашигласан сан
 - **OpenCV Python**
